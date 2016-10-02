@@ -15995,7 +15995,7 @@ Homepage
     padding: 0 15px;
   }
 }
-.tbeer-main-news-wrapper .tbeer-main-content .tbeer-load-more-wrapper a {
+.tbeer-main-news-wrapper .tbeer-main-content .tbeer-load-more-wrapper a,.tbeer-load-more-wrapper a {
   padding: 0;
   width: 100%;
   background-color: #ffffff;
@@ -16010,7 +16010,7 @@ Homepage
   -o-transition: all 0.35s ease;
   transition: all 0.35s ease;
 }
-.tbeer-main-news-wrapper .tbeer-main-content .tbeer-load-more-wrapper a:hover {
+.tbeer-main-news-wrapper .tbeer-main-content .tbeer-load-more-wrapper a:hover, .tbeer-load-more-wrapper a:hover{
   background-color: #ff6000;
   color: #ffffff;
   border: 1px solid transparent;

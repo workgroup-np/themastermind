@@ -1,20 +1,21 @@
  <?php get_header(); global $mastermind_options; ?>
-  <section class="tbeer-latest-and-trending-article-section tbeer-section">
+  <section class="tbeer-search-result-section tbeer-section tbeer-single-post-section">
     <div class="container">
         <div class="row">
+        <div class="tbeer-single-post-wrapper">
          <?php
           $category=get_queried_object(); $paged = (get_query_var('paged')) ? get_query_var('paged') : 1; 
           $total_pages=$wp_query->max_num_pages;
-          $posts_per_page=6;
+          $posts_per_page=-1;
           $cat_args=array('posts_per_page' => $posts_per_page, 'order'=> 'DESC', 'orderby' => 'date','cat'=>$category->term_id );
 			$cat_query= new WP_Query($cat_args);
 			if($cat_query->have_posts()):
             echo '<div class="tbeer-main-content col-md-8 col-sm-8 col-xs-12">
                     <h3 class="tbeer-section-title">Category: '.$category->name.'</h3>
-                      <div id="latest_post" class="tbeer-latest-article-wrapper">';
+                      <div id="latest_post" class="tbeer-search-result-wrapper">';
                     while ($cat_query->have_posts()) :$cat_query->the_post();?>
                        <!-- Latest Article -->
-                            <div class="tbeer-latest-article">
+                            <div class="tbeer-search-result">
                             <?php
                                 $thumbnail = get_post_thumbnail_id($post->ID);
                                 $img_url = wp_get_attachment_image_src( $thumbnail,'full');
@@ -31,7 +32,7 @@
                                     <img src="<?php echo esc_url($img_url);?>" alt="No image">
                                 </div>
                             <?php endif;?>
-                                <div class="tbeer-latest-article-details">
+                                <div class="tbeer-search-result-details">
                                       <div class="tbeer-category-meta"> <?php if (get_the_category()) : ?><?php the_category(' / ');endif; ?></div>
                                     <h3 class="tbeer-news-post-heading">
                                         <a href="<?php the_permalink();?>"><?php the_title();?></a>
@@ -48,22 +49,6 @@
                         <?php 
                         endwhile;
                     echo '</div>';
-          if($cat_query->found_posts<=$posts_per_page)
-                  {
-                    $style="display:none";
-                  }
-                  $total_post = $cat_query->found_posts;
-                  $raw_page = $total_post%$posts_per_page;
-                  if($raw_page==0){$page_count_raw = $total_post/$posts_per_page; }else{$page_count_raw = $total_post/$posts_per_page+1;}
-                     $page_count = floor($page_count_raw);
-                            ?>
-                  <div class="tbeer-load-more-wrapper" id="loadmore_cat" style="<?php echo $style;?>">
-                      <input type="hidden" value="2" id="paged">
-                      <input type="hidden" value="<?php echo $category->term_id;?>" id="cat_id">
-                      <input type="hidden" value="<?php echo $posts_per_page?>" id="post_per_page">
-                      <input type="hidden" value="<?php echo $page_count;?>" id="max_paged">
-                      <a href="javascript:void(0);" class="tbeer-btn tbeer-outline-btn tbeer-load-more">Load More</a>
-                  </div><?php
             echo'</div>';
 	    endif;
 	    wp_reset_postdata();?>
@@ -80,6 +65,7 @@
                 </div>
             </div>
             <!-- End -->
+            </div>
         </div>
     </div>
 </section>       

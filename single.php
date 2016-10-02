@@ -4,7 +4,7 @@ if (!defined('ABSPATH')) {echo '<h1>Forbidden</h1>'; exit();} get_header(); ?>
 
 <?php global $mastermind_options; mastermind_setPostViews(get_the_ID());?>
 
-<section class="tbeer-latest-article-section tbeer-section tbeer-single-post-section">
+ <section class="tbeer-latest-article-section tbeer-section tbeer-single-post-section">
 
     <div class="container">
 

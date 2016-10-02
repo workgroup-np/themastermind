@@ -18,7 +18,7 @@ if (!defined('ABSPATH')) {echo '<h1>Forbidden</h1>'; exit();} ?>
 
 
 
-    <h3 class="tbeer-wrapper-title"><?php _e('Related Posts','dalux');?></h3>
+    <h3 class="tbeer-wrapper-title"><?php _e('Related Posts','mastermind');?></h3>
 
 
 

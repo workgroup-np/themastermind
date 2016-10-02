@@ -36,7 +36,7 @@
     <?php endif; ?>
     <?php wp_head(); ?>
 </head>
-<?php if(is_singular()):
+<?php if(is_singular() || is_archive()):
     $class="tbeer-single-post-template";
   else:
     $class="tbeer-home-template";
@@ -107,8 +107,7 @@ endif;?>
                         <div class="tbeer-header-search-wrapper"> 
                             <div class="tbeer-search-form-wrapper">
                               <form role="search" method="get" role="search" action="<?php echo esc_url( home_url( '/' ) ); ?>">
-                                  <input type="text" id="mastermind-search" placeholder="Search The Site..." name="s">                            
-                                <button type="submit"><i class="ion-ios-search-strong"></i></button>  
+                                  <input type="text" id="mastermind-search" placeholder="Search The Site..." name="s">
                             </form>
                           </div>
                            <a href="#" class="tbeer-header-search-btn">
